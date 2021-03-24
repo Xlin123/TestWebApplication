@@ -6,9 +6,9 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Data
 {
-    public interface IWebRepo
+    public interface IBook
     {
-        IEnumerable<Command> GetCommands();
-        Command GetCommandByID(int id);
+        IEnumerable<Book> GetBooks();
+        Book GetBookByName(string name);
     }
 }
