@@ -10,5 +10,6 @@ namespace WebApplication1.Data
     {
         IEnumerable<Book> GetBooks();
         Book GetBookByName(string name);
+        Book GetBookByID(int id);
     }
 }

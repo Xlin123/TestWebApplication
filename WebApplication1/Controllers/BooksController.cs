@@ -14,21 +14,29 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly MockBookRepo mockWebRepo = new MockBookRepo();
+        private readonly MockBookRepo mockRepo = new MockBookRepo();
         //GET api/commands
         [HttpGet]
         public ActionResult<IEnumerable<Book>> GetBooks()
         {
-            var commandItems = mockWebRepo.GetBooks();
-            return Ok(commandItems);
+            var books = mockRepo.GetBooks();
+            return Ok(books);
         }
         // GET api/commands/{id}
         [HttpGet]
-        [Route("api/[controller]/{bookname=book}")]
-        public ActionResult<Book> GetBookByName(string name)
+        [Route("{bookname}")]
+        public ActionResult<Book> GetBookByName(string bookname)
         {
-            var commandItem = mockWebRepo.GetBookByName(name);
-            return Ok(commandItem);
+            var book = mockRepo.GetBookByName(bookname);
+            return Ok(book);
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public ActionResult<Book> GetBookById(int id)
+        {
+            var book = mockRepo.GetBookByID(id);
+            return Ok(book);
         }
         
     }
