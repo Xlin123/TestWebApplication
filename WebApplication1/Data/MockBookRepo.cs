@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Web;
 using WebApplication1.Models;
 
@@ -10,7 +8,7 @@ namespace WebApplication1.Data
 {
     public class MockBookRepo : IBook
     {
-        public IEnumerable<Book> GetBooks()
+        public IEnumerable<Book> GetAllBooks()
         {
             var books = new List<Book>
             {
@@ -23,7 +21,7 @@ namespace WebApplication1.Data
 
         public Book GetBookByName(string name)
         {
-            foreach(Book book in GetBooks())
+            foreach(Book book in GetAllBooks())
             {
                 if (HttpUtility.UrlDecode(book.BookName) == name)
                     return book;
@@ -31,6 +29,8 @@ namespace WebApplication1.Data
             return null;
         }
 
+
+        // DEPRECATED
         public string StripString(string bookName)
         {
             Regex rgx = new Regex("[^a-zA-Z0-9-]");
@@ -40,12 +40,47 @@ namespace WebApplication1.Data
 
         public Book GetBookByID(int id)
         {
-            foreach (Book book in GetBooks())
+            foreach (Book book in GetAllBooks())
             {
                 if (book.Id == id)
                     return book;
             }
             return null;
+        }
+
+        public IEnumerable<Book> GetBooksByGenre(string genre)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Book> GetBooksByAuthor(string author)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Book> GetTakenBooks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckIfTaken(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TakeOutBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddNewBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
         }
     }
 }

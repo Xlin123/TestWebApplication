@@ -4,12 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace WebApplication1.Dtos
 {
-    public class Book
+    public class BookCreateDto
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public string BookName { get; set; }
         [Required]
